@@ -159,7 +159,7 @@ settings:
     default: true
   - id: chroma-disable-table-style
     title: Disable table style
-    description: Turn on to use Obsidian's standard tables. By default, tables have a filled header, striped rows, roomier cells, and rounded top corners.
+    description: Turn on to use Obsidian's standard tables and data lists. By default, tables and Bases views have filled headers, striped rows, and clearer groups. Dataview lists also have striped rows.
     type: class-toggle
     default: false
 */
@@ -1240,6 +1240,53 @@ body:where(:not(.chroma-disable-table-style)) th:last-child {
 /* stylelint-disable-next-line selector-class-pattern -- Obsidian owns this class name. */
 body:where(:not(.chroma-disable-table-style)) .cm-s-obsidian .HyperMD-table-row-0 {
 	color: var(--text-normal);
+}
+
+/* Bases reuse the table colors. Keep virtualized row heights and positioning native. */
+body:where(:not(.chroma-disable-table-style)) .bases-view[data-view-type="table"] {
+	--bases-table-header-background: var(--table-header-background);
+	--bases-table-header-background-hover: var(--table-header-background-hover);
+	--bases-table-header-color: var(--table-header-color);
+	--bases-table-header-weight: var(--font-semibold);
+	--bases-table-group-background: var(--background-primary);
+	--bases-table-group-gap: var(--size-4-4);
+	--bases-table-column-border-width: 0;
+	--bases-table-row-background-hover: color-mix(in oklch, var(--text-normal) 12%, transparent);
+}
+
+body:where(:not(.chroma-disable-table-style)) .bases-view[data-view-type="table"] .bases-thead {
+	border-start-start-radius: var(--radius-m);
+	border-start-end-radius: var(--radius-m);
+}
+
+/* A shadow frames each group without changing the renderer's measurements. */
+body:where(:not(.chroma-disable-table-style)) .bases-view[data-view-type="table"] .bases-table {
+	border-radius: var(--radius-m);
+	box-shadow: 0 0 0 1px var(--background-modifier-border);
+}
+
+body:where(:not(.chroma-disable-table-style)) .bases-view:is([data-view-type="table"], [data-view-type="list"]) .bases-group-heading {
+	--bases-group-heading-value-color: var(--text-normal);
+
+	background-color: color-mix(in oklch, var(--color-purple) 12%, var(--background-primary));
+	box-shadow: inset 0 1px 0 var(--background-modifier-border), inset 0 -1px 0 var(--background-modifier-border);
+}
+
+/* Only data rows are striped; headers, group summaries, and selection overlays stay native. */
+body:where(:not(.chroma-disable-table-style)) .bases-tbody > .bases-tr:nth-child(even):not(.bases-table-group-summary-row),
+body:where(:not(.chroma-disable-table-style)) .bases-list-group-list > .bases-list-item:nth-child(even),
+body:where(:not(.chroma-disable-table-style)) .dataview.list-view-ul > li:nth-child(even):not(.task-list-item) {
+	background-color: var(--table-row-alt-background);
+}
+
+body:where(:not(.chroma-disable-table-style)) .bases-list-group-list > .bases-list-item:hover,
+body:where(:not(.chroma-disable-table-style)) .dataview.list-view-ul > li:not(.task-list-item):hover {
+	background-color: color-mix(in oklch, var(--text-normal) 12%, transparent);
+}
+
+body:where(:not(.chroma-disable-table-style)) .dataview.list-view-ul > li:not(.task-list-item) {
+	padding: var(--size-2-1) var(--size-4-2);
+	border-radius: var(--radius-s);
 }
 
 /* Softens the lines between panels. The other panel styles set these to transparent. */

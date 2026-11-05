@@ -40,7 +40,9 @@ Dark mode and light mode each have their own setting, so each mode can use a dif
 - **Heading colors** offers Plain, Accent, and Rainbow.
 - **Disable alternate checkboxes** restores Obsidian's standard checkboxes.
 - **Colorful links and emphasis** shows internal links as soft pills and colors bold and italic text.
-- **Disable table style** restores Obsidian's standard tables.
+- **Disable table style** restores Obsidian's standard tables, Bases views, and Dataview lists.
+
+Bases tables use the same filled headers and alternating row shading as Markdown tables. Tinted group headings and an outline around each table group make groups easier to scan. Bases list views and Dataview lists also use alternating row shading. Summary rows and cell selection keep their native behavior.
 
 ## Add a color scheme
 
