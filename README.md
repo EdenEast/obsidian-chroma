@@ -1,6 +1,6 @@
 # Chroma
 
-Chroma is a personal Obsidian theme with neutral backgrounds and a choice of color schemes. It has six schemes of its own, each with light and dark versions. It also includes ported schemes such as Dracula and Gruvbox.
+Chroma is an Obsidian theme with neutral backgrounds and a choice of color schemes. It has six schemes of its own, each with light and dark versions. It also includes ported schemes such as Dracula and Gruvbox.
 
 ## Install the theme
 
@@ -13,28 +13,34 @@ Obsidian loads `theme.css` directly, so the theme has no build step.
 
 Install the [Style Settings](https://github.com/community-archive/obsidian-style-settings) plugin, then open **Settings > Style Settings > Chroma**. Without the plugin, Chroma uses the Neutral scheme and the default options.
 
-### Chroma color schemes
+The settings are grouped into collapsible sections.
 
-**Color scheme** offers Neutral, Harbor, Parchment, Forest, Carbon, and Mulberry.
+### Color schemes
 
-### Other color schemes
-
-Dark mode and light mode each have their own setting, so each mode can use a different scheme. A selected scheme replaces the Chroma color scheme in that mode. If you select None, that mode uses the Chroma color scheme.
-
+- **Color scheme** offers Neutral, Harbor, Parchment, Forest, Carbon, and Mulberry.
 - **Dark mode scheme** offers Dracula, Tokyo Night, Gruvbox Dark, Horizon, Sonokai Espresso, Nordic, Coffee, Nightfox, Mocha Dark, and Panda Syntax.
 - **Light mode scheme** offers Gruvbox Light, Dayfox, and Panda Syntax.
 
-### Components
+Dark mode and light mode each have their own setting, so each mode can use a different scheme. A selected scheme replaces the **Color scheme** choice in that mode. If you select None, that mode uses **Color scheme**.
 
-These settings work with every color scheme.
+### Interface
+
+- **Panel style** applies on desktop only. It offers these options:
+  - **Default** gives sidebars a darker background.
+  - **Cards** shows each panel as a borderless rounded card on a darker background, with floating tabs.
+  - **Soft shadows** replaces the lines between panels with shadows.
+  - **Three levels** makes the ribbon and tab bars darkest and the sidebars medium.
+  - **Raised editor** darkens everything around the editor and rounds its top corners.
+- **Folder colors** offers Plain, Colored text, and Colored blocks.
+- **Disable active line highlight** removes the accent color from the line that holds the text cursor.
+
+### Components
 
 - **Callout appearance** offers Filled, Outlined, Accent line, Tinted with accent line, Tinted, and Solid.
 - **Heading colors** offers Plain, Accent, and Rainbow.
-- **Folder colors** offers Plain, Colored text, and Colored blocks.
 - **Disable alternate checkboxes** restores Obsidian's standard checkboxes.
 - **Colorful links and emphasis** shows internal links as soft pills and colors bold and italic text.
 - **Disable table style** restores Obsidian's standard tables.
-- **Disable active line highlight** removes the accent color from the line that holds the text cursor.
 
 ## Add a color scheme
 

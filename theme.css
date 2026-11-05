@@ -2,10 +2,11 @@
 name: Chroma
 id: chroma
 settings:
-  - id: chroma-schemes-heading
-    title: Chroma color schemes
+  - id: chroma-colors-heading
+    title: Color schemes
     type: heading
     level: 1
+    collapsed: true
   - id: chroma-color-scheme
     title: Color scheme
     description: Each scheme includes light and dark appearances. Choose the base mode in Obsidian Appearance settings. Used in any mode without another color scheme selected.
@@ -25,10 +26,6 @@ settings:
         value: chroma-palette-carbon
       - label: Mulberry
         value: chroma-palette-mulberry
-  - id: chroma-other-schemes-heading
-    title: Other color schemes
-    type: heading
-    level: 1
   - id: chroma-other-dark-scheme
     title: Dark mode scheme
     description: Replaces the Chroma color scheme in dark mode while selected. None uses the Chroma color scheme.
@@ -73,10 +70,51 @@ settings:
         value: chroma-other-light-dayfox
       - label: Panda Syntax
         value: chroma-other-light-panda
+  - id: chroma-interface-heading
+    title: Interface
+    type: heading
+    level: 1
+    collapsed: true
+  - id: chroma-panel-style
+    title: Panel style
+    description: Sets how sidebars, tabs, and the editor are separated on desktop.
+    type: class-select
+    allowEmpty: false
+    default: chroma-panels-default
+    options:
+      - label: Default
+        value: chroma-panels-default
+      - label: Cards
+        value: chroma-panels-cards
+      - label: Soft shadows
+        value: chroma-panels-shadows
+      - label: Three levels
+        value: chroma-panels-levels
+      - label: Raised editor
+        value: chroma-panels-raised
+  - id: chroma-folder-colors
+    title: Folder colors
+    description: Colors each top-level folder from the active color scheme, and its subfolders follow. Colored text tints folder names. Colored blocks fills the whole folder.
+    type: class-select
+    allowEmpty: false
+    default: chroma-folders-plain
+    options:
+      - label: Plain
+        value: chroma-folders-plain
+      - label: Colored text
+        value: chroma-folders-text
+      - label: Colored blocks
+        value: chroma-folders-blocks
+  - id: chroma-disable-active-line
+    title: Disable active line highlight
+    description: Turn on to remove the accent wash from the line holding the text cursor in Live Preview and Source mode.
+    type: class-toggle
+    default: false
   - id: chroma-components-heading
     title: Components
     type: heading
     level: 1
+    collapsed: true
   - id: chroma-callout-appearance
     title: Callout appearance
     description: Changes callout surfaces and borders independently of the color scheme. Callout types keep their colors and folding behavior.
@@ -109,19 +147,6 @@ settings:
         value: chroma-headings-accent
       - label: Rainbow
         value: chroma-headings-rainbow
-  - id: chroma-folder-colors
-    title: Folder colors
-    description: Colors each top-level folder from the active color scheme, and its subfolders follow. Colored text tints folder names. Colored blocks fills the whole folder.
-    type: class-select
-    allowEmpty: false
-    default: chroma-folders-plain
-    options:
-      - label: Plain
-        value: chroma-folders-plain
-      - label: Colored text
-        value: chroma-folders-text
-      - label: Colored blocks
-        value: chroma-folders-blocks
   - id: chroma-disable-alternate-checkboxes
     title: Disable alternate checkboxes
     description: Turn on to use Obsidian's standard checkboxes. By default, custom task markers such as [/], [?], and [!] get an icon and color, and unknown markers show a plain checkmark.
@@ -131,15 +156,10 @@ settings:
     title: Colorful links and emphasis
     description: Shows internal links as soft pills and colors bold, italic, and bold italic text. Colors follow the active color scheme.
     type: class-toggle
-    default: false
+    default: true
   - id: chroma-disable-table-style
     title: Disable table style
     description: Turn on to use Obsidian's standard tables. By default, tables have a filled header, striped rows, roomier cells, and rounded top corners.
-    type: class-toggle
-    default: false
-  - id: chroma-disable-active-line
-    title: Disable active line highlight
-    description: Turn on to remove the accent wash from the line holding the text cursor in Live Preview and Source mode.
     type: class-toggle
     default: false
 */
@@ -1557,6 +1577,284 @@ body:where(:not(.chroma-disable-table-style)) th:last-child {
 /* stylelint-disable-next-line selector-class-pattern -- Obsidian owns this class name. */
 body:where(:not(.chroma-disable-table-style)) .cm-s-obsidian .HyperMD-table-row-0 {
 	color: var(--text-normal);
+}
+
+/* Softens the lines between panels. The other panel styles set these to transparent. */
+:root body {
+	--divider-color: color-mix(in srgb, var(--background-modifier-border) 50%, var(--background-secondary));
+	--tab-outline-color: var(--divider-color);
+}
+
+/* Panel styles apply on desktop only, because mobile panels open as drawers.
+   Cards have no borders. Each panel is an editor-colored card on a darker frame,
+   and tabs float above the cards. :root outranks the palettes. */
+:root body:not(.is-mobile):where(.chroma-panels-cards) {
+	--chroma-card-frame: var(--background-secondary-alt);
+	--chroma-card-gap: 14px;
+	--divider-width: 0;
+	--divider-color: transparent;
+	--titlebar-background: var(--chroma-card-frame);
+	--titlebar-background-focused: var(--chroma-card-frame);
+	--ribbon-background: var(--chroma-card-frame);
+	--ribbon-background-collapsed: var(--chroma-card-frame);
+	--tab-container-background: var(--chroma-card-frame);
+	--tab-outline-width: 0;
+	--tab-outline-color: transparent;
+	--tab-divider-color: transparent;
+	--tab-curve: 0;
+	--tab-radius: 9px;
+	--tab-radius-active: 9px;
+	--status-bar-background: var(--background-primary);
+	--status-bar-radius: var(--radius-l) 0 0 var(--radius-l);
+}
+
+/* Sidebar views paint their own background from this variable. */
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-split.mod-sidedock {
+	--background-secondary: var(--chroma-card-frame);
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) :is(.workspace-split.mod-sidedock, .workspace-split.mod-root) {
+	background-color: var(--chroma-card-frame);
+}
+
+/* Inside a card, views expect this variable to match the card. */
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-split.mod-sidedock .workspace-leaf-content {
+	--background-secondary: var(--background-primary);
+	background-color: var(--background-primary);
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-split.mod-right-split {
+	padding-bottom: var(--chroma-card-gap);
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-tab-header-container {
+	border-bottom: none;
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-tab-container {
+	margin: 7px var(--chroma-card-gap) var(--chroma-card-gap) 0;
+	border-radius: var(--radius-l);
+}
+
+/* Stacked tabs scroll inside this container, so they must keep their own overflow. */
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-tabs:not(.mod-stacked) .workspace-tab-container {
+	overflow: hidden;
+}
+
+/* The vault switcher is its own card, so stacked sidebar cards need no bottom gap. */
+body:not(.is-mobile):where(.chroma-panels-cards) .mod-sidedock .workspace-tab-container {
+	margin-bottom: 0;
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+	width: auto;
+	margin: var(--chroma-card-gap) var(--chroma-card-gap) var(--chroma-card-gap) 0;
+	border: none;
+	border-radius: var(--radius-m);
+	background-color: var(--background-primary);
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .mod-root .workspace-tab-header-container-inner {
+	padding: 1px 15px 0;
+	gap: 5px;
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .mod-sidedock .workspace-tab-header-container-inner {
+	margin: 6px 0 0;
+	padding: 1px var(--size-4-1);
+	gap: 5px;
+}
+
+body:not(.is-mobile):where(.chroma-panels-cards) .mod-sidedock .workspace-tab-header.is-active {
+	border-radius: var(--radius-m);
+	background-color: var(--background-primary);
+}
+
+/* The status bar sits against the window edge, so it has no right border. */
+body:not(.is-mobile):where(.chroma-panels-cards) .status-bar {
+	margin-bottom: var(--size-4-2);
+	border: 1px solid var(--background-modifier-border);
+	border-right-width: 0;
+}
+
+/* Soft shadows, Three levels, and Raised editor separate panels with depth, not lines.
+   :root outranks the palettes, which set the same background variables. */
+:root body.theme-dark:not(.is-mobile):where(.chroma-panels-shadows, .chroma-panels-levels, .chroma-panels-raised) {
+	--chroma-panel-deep: color-mix(in srgb, var(--background-secondary-alt) 60%, black);
+	--chroma-panel-shadow-near: rgba(0, 0, 0, 0.35);
+	--chroma-panel-shadow-far: rgba(0, 0, 0, 0.5);
+}
+
+:root body.theme-light:not(.is-mobile):where(.chroma-panels-shadows, .chroma-panels-levels, .chroma-panels-raised) {
+	--chroma-panel-deep: color-mix(in srgb, var(--background-secondary-alt) 92%, black);
+	--chroma-panel-shadow-near: rgba(0, 0, 0, 0.1);
+	--chroma-panel-shadow-far: rgba(0, 0, 0, 0.16);
+}
+
+:root body:not(.is-mobile):where(.chroma-panels-levels, .chroma-panels-raised) {
+	--titlebar-background: var(--chroma-panel-deep);
+	--titlebar-background-focused: var(--chroma-panel-deep);
+	--ribbon-background: var(--chroma-panel-deep);
+	--ribbon-background-collapsed: var(--chroma-panel-deep);
+	--tab-container-background: var(--chroma-panel-deep);
+}
+
+body:not(.is-mobile):where(.chroma-panels-shadows, .chroma-panels-levels, .chroma-panels-raised) :is(.workspace-ribbon, .workspace-leaf-resize-handle, .workspace-tab-header-container, .workspace-sidedock-vault-profile) {
+	--divider-color: transparent;
+	--tab-outline-color: transparent;
+}
+
+/* Without a line or a darker tab bar, stacked sidebar panes need their own divider. */
+body:not(.is-mobile):where(.chroma-panels-shadows, .chroma-panels-raised) .mod-sidedock .workspace-tabs:not(.mod-top) .workspace-tab-header-container {
+	box-shadow: inset 0 1px 0 var(--background-modifier-border);
+}
+
+body:not(.is-mobile):where(.chroma-panels-shadows) .workspace-split.mod-left-split:not(.is-sidedock-collapsed) {
+	position: relative;
+	z-index: 3;
+	box-shadow: 2px 0 4px var(--chroma-panel-shadow-near), 8px 0 28px var(--chroma-panel-shadow-far);
+}
+
+body:not(.is-mobile):where(.chroma-panels-shadows) .workspace-split.mod-right-split:not(.is-sidedock-collapsed) {
+	position: relative;
+	z-index: 3;
+	box-shadow: -2px 0 4px var(--chroma-panel-shadow-near), -8px 0 28px var(--chroma-panel-shadow-far);
+}
+
+body:not(.is-mobile):where(.chroma-panels-shadows) .mod-root .workspace-tab-header-container {
+	position: relative;
+	z-index: 2;
+	box-shadow: 0 2px 4px var(--chroma-panel-shadow-near), 0 6px 20px var(--chroma-panel-shadow-far);
+}
+
+body:not(.is-mobile):where(.chroma-panels-levels) .workspace-sidedock-vault-profile,
+body:not(.is-mobile):where(.chroma-panels-raised) :is(.workspace-split.mod-sidedock, .workspace-sidedock-vault-profile, .workspace-split.mod-root) {
+	background-color: var(--chroma-panel-deep);
+}
+
+/* Sidebar views paint their own background from this variable. */
+body:not(.is-mobile):where(.chroma-panels-raised) .workspace-split.mod-sidedock {
+	--background-secondary: var(--chroma-panel-deep);
+}
+
+/* The editor stays above the sidebars and keeps overflow visible, so its shadow can reach them. */
+body:not(.is-mobile):where(.chroma-panels-raised) .workspace-split.mod-root {
+	position: relative;
+	z-index: 2;
+	overflow: visible;
+}
+
+body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs {
+	overflow: visible;
+}
+
+body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tab-container {
+	border-radius: var(--radius-l) var(--radius-l) 0 0;
+	box-shadow: 0 0 6px var(--chroma-panel-shadow-near), 0 0 30px var(--chroma-panel-shadow-far);
+}
+
+body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-container {
+	overflow: hidden;
+}
+
+/* Style Settings: each open section sits in its own box, and open headings cycle
+   through three colors. Top-level sections show an icon in place of the arrow.
+   Headings and boxes alternate as siblings, so nth-child counts both. */
+.style-settings-collapse-indicator {
+	top: unset;
+}
+
+/* The plugin's negative margin would push arrows and icons outside their clipped row. */
+.style-settings-heading[data-level="0"] + .style-settings-container .style-settings-collapse-indicator {
+	margin-left: 0;
+}
+
+.style-settings-collapse-indicator > svg {
+	width: 11px;
+	height: 11px;
+	stroke-width: 3px;
+}
+
+.style-settings-heading {
+	margin-bottom: var(--size-4-2);
+	border-radius: var(--radius-m);
+}
+
+.style-settings-heading.is-collapsed:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.style-settings-heading:not(.is-collapsed, [data-level="0"]) {
+	border-bottom: none;
+}
+
+.style-settings-container:not(.style-settings-heading[data-level="0"] + .style-settings-container) {
+	padding: var(--size-4-4);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background-color: var(--background-secondary);
+}
+
+.style-settings-container .setting-item:first-child.setting-item-heading {
+	margin-top: 0;
+}
+
+.style-settings-container .setting-item:last-child {
+	padding-bottom: 0;
+}
+
+.style-settings-heading:not(.is-collapsed):nth-child(3n + 1) {
+	--chroma-settings-heading: var(--color-red);
+}
+
+.style-settings-heading:not(.is-collapsed):nth-child(3n + 2) {
+	--chroma-settings-heading: var(--color-orange);
+}
+
+.style-settings-heading:not(.is-collapsed):nth-child(3n + 3) {
+	--chroma-settings-heading: var(--color-green);
+}
+
+.style-settings-heading:not(.is-collapsed) .setting-item-name {
+	color: var(--chroma-settings-heading);
+}
+
+.style-settings-heading:not(.is-collapsed) .style-settings-collapse-indicator {
+	color: color-mix(in srgb, var(--chroma-settings-heading) 60%, var(--background-primary));
+}
+
+.style-settings-heading:is([data-id="chroma"], [data-id="chroma-colors-heading"], [data-id="chroma-interface-heading"], [data-id="chroma-components-heading"]) .style-settings-collapse-indicator > svg {
+	width: 18px;
+	height: 18px;
+	background-color: currentcolor;
+	transform: none;
+	mask-size: contain;
+	mask-repeat: no-repeat;
+	vertical-align: text-bottom;
+}
+
+.style-settings-heading:is([data-id="chroma"], [data-id="chroma-colors-heading"], [data-id="chroma-interface-heading"], [data-id="chroma-components-heading"]).is-collapsed .style-settings-collapse-indicator > svg {
+	transform: none;
+}
+
+.style-settings-heading:is([data-id="chroma"], [data-id="chroma-colors-heading"], [data-id="chroma-interface-heading"], [data-id="chroma-components-heading"]) .style-settings-collapse-indicator path {
+	display: none;
+}
+
+.style-settings-heading[data-id="chroma"] .style-settings-collapse-indicator > svg {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='9' r='7'/%3E%3Ccircle cx='15' cy='15' r='7'/%3E%3C/svg%3E");
+}
+
+.style-settings-heading[data-id="chroma-colors-heading"] .style-settings-collapse-indicator > svg {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z'/%3E%3C/svg%3E");
+}
+
+.style-settings-heading[data-id="chroma-interface-heading"] .style-settings-collapse-indicator > svg {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='18' x='3' y='3' rx='2'/%3E%3Cpath d='M3 9h18'/%3E%3Cpath d='M9 21V9'/%3E%3C/svg%3E");
+}
+
+.style-settings-heading[data-id="chroma-components-heading"] .style-settings-collapse-indicator > svg {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='7' x='3' y='3' rx='1'/%3E%3Crect width='7' height='7' x='14' y='3' rx='1'/%3E%3Crect width='7' height='7' x='14' y='14' rx='1'/%3E%3Crect width='7' height='7' x='3' y='14' rx='1'/%3E%3C/svg%3E");
 }
 
 /* Alternate checkbox icons below are adapted from the Border theme by Akifyss.
