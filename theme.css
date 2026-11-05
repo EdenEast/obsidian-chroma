@@ -179,6 +179,24 @@ body {
 	--radius-l: 12px;
 }
 
+/* Shared palette roles keep the same specificity as the palette blocks below. */
+:root body.theme-dark,
+:root body.theme-light {
+	--background-primary: var(--color-base-00);
+	--background-primary-alt: var(--color-base-05);
+	--text-normal: var(--color-base-100);
+	--text-muted: var(--color-base-60);
+	--text-faint: var(--color-base-50);
+	--color-red: rgb(var(--color-red-rgb));
+	--color-orange: rgb(var(--color-orange-rgb));
+	--color-yellow: rgb(var(--color-yellow-rgb));
+	--color-green: rgb(var(--color-green-rgb));
+	--color-cyan: rgb(var(--color-cyan-rgb));
+	--color-blue: rgb(var(--color-blue-rgb));
+	--color-purple: rgb(var(--color-purple-rgb));
+	--color-pink: rgb(var(--color-pink-rgb));
+}
+
 /* Base colors let Obsidian derive its standard component colors. :root outranks core
    .is-mobile.theme-* rules, which would otherwise force black backgrounds on mobile.
    Every palette uses this prefix, so palettes still resolve by source order. */
@@ -198,30 +216,17 @@ body {
 	--accent-h: 212;
 	--accent-s: 82%;
 	--accent-l: 68%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #191c1f;
 	--background-secondary-alt: #15181b;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-on-accent: #111;
 	--color-red-rgb: 252, 102, 107;
-	--color-red: #fc666b;
 	--color-orange-rgb: 233, 151, 63;
-	--color-orange: #e9973f;
 	--color-yellow-rgb: 224, 222, 113;
-	--color-yellow: #e0de71;
 	--color-green-rgb: 68, 207, 110;
-	--color-green: #44cf6e;
 	--color-cyan-rgb: 83, 223, 221;
-	--color-cyan: #53dfdd;
 	--color-blue-rgb: 66, 155, 255;
-	--color-blue: #429bff;
 	--color-purple-rgb: 169, 132, 255;
-	--color-purple: #a984ff;
 	--color-pink-rgb: 250, 153, 205;
-	--color-pink: #fa99cd;
 }
 
 :root body.theme-light {
@@ -240,30 +245,17 @@ body {
 	--accent-h: 212;
 	--accent-s: 76%;
 	--accent-l: 42%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: var(--color-base-10);
 	--background-secondary-alt: var(--color-base-20);
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-on-accent: #fff;
 	--color-red-rgb: 192, 40, 59;
-	--color-red: #c0283b;
 	--color-orange-rgb: 162, 80, 0;
-	--color-orange: #a25000;
 	--color-yellow-rgb: 129, 99, 0;
-	--color-yellow: #816300;
 	--color-green-rgb: 5, 118, 50;
-	--color-green: #057632;
 	--color-cyan-rgb: 0, 115, 113;
-	--color-cyan: #007371;
 	--color-blue-rgb: 7, 100, 203;
-	--color-blue: #0764cb;
 	--color-purple-rgb: 110, 75, 219;
-	--color-purple: #6e4bdb;
 	--color-pink-rgb: 182, 49, 113;
-	--color-pink: #b63171;
 }
 
 /* Alternate palettes follow Neutral at equal specificity. Keep both modes complete. */
@@ -283,33 +275,19 @@ body {
 	--accent-h: 214;
 	--accent-s: 55%;
 	--accent-l: 64%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #131a24;
 	--background-secondary-alt: #10161f;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #86abdc;
 	--text-highlight-bg: #dbc07455;
-	--text-on-accent: #111;
 	--background-modifier-border: #2b3b51;
 	--color-red-rgb: 228, 116, 142;
-	--color-red: #e4748e;
 	--color-orange-rgb: 244, 162, 97;
-	--color-orange: #f4a261;
 	--color-yellow-rgb: 219, 192, 116;
-	--color-yellow: #dbc074;
 	--color-green-rgb: 129, 178, 154;
-	--color-green: #81b29a;
 	--color-cyan-rgb: 99, 205, 207;
-	--color-cyan: #63cdcf;
 	--color-blue-rgb: 113, 156, 214;
-	--color-blue: #719cd6;
 	--color-purple-rgb: 167, 139, 220;
-	--color-purple: #a78bdc;
 	--color-pink-rgb: 221, 157, 201;
-	--color-pink: #dd9dc9;
 }
 
 :root body.theme-light:where(.chroma-palette-harbor) {
@@ -328,33 +306,19 @@ body {
 	--accent-h: 225;
 	--accent-s: 62%;
 	--accent-l: 41%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #e4dcd4;
 	--background-secondary-alt: #dad1cd;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #2848a9;
 	--text-highlight-bg: #dbc07466;
-	--text-on-accent: #fff;
 	--background-modifier-border: #d3c7bb;
 	--color-red-rgb: 165, 34, 47;
-	--color-red: #a5222f;
 	--color-orange-rgb: 152, 75, 2;
-	--color-orange: #984b02;
 	--color-yellow-rgb: 128, 91, 0;
-	--color-yellow: #805b00;
 	--color-green-rgb: 57, 104, 71;
-	--color-green: #396847;
 	--color-cyan-rgb: 35, 106, 112;
-	--color-cyan: #236a70;
 	--color-blue-rgb: 40, 72, 169;
-	--color-blue: #2848a9;
 	--color-purple-rgb: 110, 51, 206;
-	--color-purple: #6e33ce;
 	--color-pink-rgb: 159, 42, 128;
-	--color-pink: #9f2a80;
 }
 
 :root body.theme-dark:where(.chroma-palette-parchment) {
@@ -373,33 +337,19 @@ body {
 	--accent-h: 34;
 	--accent-s: 65%;
 	--accent-l: 65%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #201d19;
 	--background-secondary-alt: #1a1815;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #e0ad6c;
 	--text-highlight-bg: #e0ad6c44;
-	--text-on-accent: #111;
 	--background-modifier-border: #3b332b;
 	--color-red-rgb: 229, 138, 118;
-	--color-red: #e58a76;
 	--color-orange-rgb: 224, 163, 94;
-	--color-orange: #e0a35e;
 	--color-yellow-rgb: 217, 191, 116;
-	--color-yellow: #d9bf74;
 	--color-green-rgb: 169, 187, 122;
-	--color-green: #a9bb7a;
 	--color-cyan-rgb: 134, 189, 174;
-	--color-cyan: #86bdae;
 	--color-blue-rgb: 142, 174, 203;
-	--color-blue: #8eaecb;
 	--color-purple-rgb: 199, 159, 192;
-	--color-purple: #c79fc0;
 	--color-pink-rgb: 230, 169, 185;
-	--color-pink: #e6a9b9;
 }
 
 :root body.theme-light:where(.chroma-palette-parchment) {
@@ -418,33 +368,19 @@ body {
 	--accent-h: 30;
 	--accent-s: 65%;
 	--accent-l: 36%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #ece2d1;
 	--background-secondary-alt: #e3d6c1;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #8f571e;
 	--text-highlight-bg: #e0b05a55;
-	--text-on-accent: #fff;
 	--background-modifier-border: #e3d6c1;
 	--color-red-rgb: 168, 64, 47;
-	--color-red: #a8402f;
 	--color-orange-rgb: 153, 82, 16;
-	--color-orange: #995210;
 	--color-yellow-rgb: 129, 96, 0;
-	--color-yellow: #816000;
 	--color-green-rgb: 83, 109, 41;
-	--color-green: #536d29;
 	--color-cyan-rgb: 45, 111, 99;
-	--color-cyan: #2d6f63;
 	--color-blue-rgb: 61, 104, 143;
-	--color-blue: #3d688f;
 	--color-purple-rgb: 131, 80, 126;
-	--color-purple: #83507e;
 	--color-pink-rgb: 166, 59, 104;
-	--color-pink: #a63b68;
 }
 
 :root body.theme-dark:where(.chroma-palette-forest) {
@@ -463,33 +399,19 @@ body {
 	--accent-h: 145;
 	--accent-s: 45%;
 	--accent-l: 61%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #16201c;
 	--background-secondary-alt: #111a16;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #6fc894;
 	--text-highlight-bg: #d8c86a44;
-	--text-on-accent: #111;
 	--background-modifier-border: #2e4236;
 	--color-red-rgb: 236, 138, 128;
-	--color-red: #ec8a80;
 	--color-orange-rgb: 230, 169, 101;
-	--color-orange: #e6a965;
 	--color-yellow-rgb: 220, 201, 111;
-	--color-yellow: #dcc96f;
 	--color-green-rgb: 143, 209, 158;
-	--color-green: #8fd19e;
 	--color-cyan-rgb: 116, 201, 192;
-	--color-cyan: #74c9c0;
 	--color-blue-rgb: 134, 180, 214;
-	--color-blue: #86b4d6;
 	--color-purple-rgb: 192, 163, 220;
-	--color-purple: #c0a3dc;
 	--color-pink-rgb: 230, 170, 196;
-	--color-pink: #e6aac4;
 }
 
 :root body.theme-light:where(.chroma-palette-forest) {
@@ -508,33 +430,19 @@ body {
 	--accent-h: 145;
 	--accent-s: 55%;
 	--accent-l: 30%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #e5efe8;
 	--background-secondary-alt: #dbe8de;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #217343;
 	--text-highlight-bg: #d9c95a55;
-	--text-on-accent: #fff;
 	--background-modifier-border: #c9ddce;
 	--color-red-rgb: 176, 58, 50;
-	--color-red: #b03a32;
 	--color-orange-rgb: 153, 81, 14;
-	--color-orange: #99510e;
 	--color-yellow-rgb: 121, 99, 0;
-	--color-yellow: #796300;
 	--color-green-rgb: 33, 115, 67;
-	--color-green: #217343;
 	--color-cyan-rgb: 30, 113, 109;
-	--color-cyan: #1e716d;
 	--color-blue-rgb: 44, 106, 148;
-	--color-blue: #2c6a94;
 	--color-purple-rgb: 119, 82, 156;
-	--color-purple: #77529c;
 	--color-pink-rgb: 165, 58, 114;
-	--color-pink: #a53a72;
 }
 
 :root body.theme-dark:where(.chroma-palette-carbon) {
@@ -553,33 +461,19 @@ body {
 	--accent-h: 200;
 	--accent-s: 100%;
 	--accent-l: 68%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #000;
 	--background-secondary-alt: #000;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #5cc8ff;
 	--text-highlight-bg: #ffe06640;
-	--text-on-accent: #111;
 	--background-modifier-border: #2a2b30;
 	--color-red-rgb: 255, 107, 107;
-	--color-red: #ff6b6b;
 	--color-orange-rgb: 255, 162, 77;
-	--color-orange: #ffa24d;
 	--color-yellow-rgb: 255, 216, 77;
-	--color-yellow: #ffd84d;
 	--color-green-rgb: 79, 214, 138;
-	--color-green: #4fd68a;
 	--color-cyan-rgb: 63, 214, 214;
-	--color-cyan: #3fd6d6;
 	--color-blue-rgb: 92, 200, 255;
-	--color-blue: #5cc8ff;
 	--color-purple-rgb: 182, 156, 255;
-	--color-purple: #b69cff;
 	--color-pink-rgb: 233, 159, 201;
-	--color-pink: #e99fc9;
 }
 
 :root body.theme-light:where(.chroma-palette-carbon) {
@@ -598,33 +492,19 @@ body {
 	--accent-h: 206;
 	--accent-s: 90%;
 	--accent-l: 39%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #f4f4f5;
 	--background-secondary-alt: #e7e7e8;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #0a66b2;
 	--text-highlight-bg: #ffe06699;
-	--text-on-accent: #fff;
 	--background-modifier-border: #e0e0e4;
 	--color-red-rgb: 200, 30, 43;
-	--color-red: #c81e2b;
 	--color-orange-rgb: 172, 79, 9;
-	--color-orange: #ac4f09;
 	--color-yellow-rgb: 132, 101, 0;
-	--color-yellow: #846500;
 	--color-green-rgb: 20, 122, 58;
-	--color-green: #147a3a;
 	--color-cyan-rgb: 14, 114, 142;
-	--color-cyan: #0e728e;
 	--color-blue-rgb: 10, 102, 178;
-	--color-blue: #0a66b2;
 	--color-purple-rgb: 109, 63, 200;
-	--color-purple: #6d3fc8;
 	--color-pink-rgb: 169, 44, 125;
-	--color-pink: #a92c7d;
 }
 
 :root body.theme-dark:where(.chroma-palette-mulberry) {
@@ -643,33 +523,19 @@ body {
 	--accent-h: 335;
 	--accent-s: 64%;
 	--accent-l: 72%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #1b101c;
 	--background-secondary-alt: #170e18;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #ea9bbc;
 	--text-highlight-bg: #f2b76644;
-	--text-on-accent: #111;
 	--background-modifier-border: #463049;
 	--color-red-rgb: 242, 125, 140;
-	--color-red: #f27d8c;
 	--color-orange-rgb: 240, 160, 106;
-	--color-orange: #f0a06a;
 	--color-yellow-rgb: 233, 196, 106;
-	--color-yellow: #e9c46a;
 	--color-green-rgb: 143, 207, 154;
-	--color-green: #8fcf9a;
 	--color-cyan-rgb: 124, 200, 214;
-	--color-cyan: #7cc8d6;
 	--color-blue-rgb: 147, 171, 240;
-	--color-blue: #93abf0;
 	--color-purple-rgb: 198, 156, 240;
-	--color-purple: #c69cf0;
 	--color-pink-rgb: 234, 164, 206;
-	--color-pink: #eaa4ce;
 }
 
 :root body.theme-light:where(.chroma-palette-mulberry) {
@@ -688,40 +554,26 @@ body {
 	--accent-h: 330;
 	--accent-s: 54%;
 	--accent-l: 43%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #f2e2ea;
 	--background-secondary-alt: #e7d6df;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #a02a66;
 	--text-highlight-bg: #f2b76666;
-	--text-on-accent: #fff;
 	--background-modifier-border: #e4cdd9;
 	--color-red-rgb: 179, 38, 63;
-	--color-red: #b3263f;
 	--color-orange-rgb: 157, 77, 14;
-	--color-orange: #9d4d0e;
 	--color-yellow-rgb: 127, 95, 0;
-	--color-yellow: #7f5f00;
 	--color-green-rgb: 45, 112, 76;
-	--color-green: #2d704c;
 	--color-cyan-rgb: 29, 109, 120;
-	--color-cyan: #1d6d78;
 	--color-blue-rgb: 58, 95, 168;
-	--color-blue: #3a5fa8;
 	--color-purple-rgb: 125, 63, 168;
-	--color-purple: #7d3fa8;
 	--color-pink-rgb: 167, 46, 121;
-	--color-pink: #a72e79;
 }
 
 /* Other schemes follow every Chroma palette at equal specificity, so a selected
    scheme wins and the Chroma palette stays the fallback. Dark and light mode each
-   have their own setting. Each scheme must set every variable a Chroma palette
-   sets, or the selected palette shows through. A source hue that does not exist
-   reuses the nearest one.
+   have their own setting. Each scheme must set every palette-specific variable,
+   or the selected palette shows through. Shared roles and mode defaults are
+   inherited. A source hue that does not exist reuses the nearest one.
    Dracula: https://draculatheme.com/contribute
    Tokyo Night: https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/colors
    Gruvbox: https://github.com/morhetz/gruvbox/blob/master/colors/gruvbox.vim
@@ -748,33 +600,19 @@ body {
 	--accent-h: 265;
 	--accent-s: 89%;
 	--accent-l: 78%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #21222c;
 	--background-secondary-alt: #1a1b23;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #bf95f9;
 	--text-highlight-bg: #f1fa8c44;
-	--text-on-accent: #111;
 	--background-modifier-border: #44475a;
 	--color-red-rgb: 255, 85, 85;
-	--color-red: #f55;
 	--color-orange-rgb: 255, 184, 108;
-	--color-orange: #ffb86c;
 	--color-yellow-rgb: 241, 250, 140;
-	--color-yellow: #f1fa8c;
 	--color-green-rgb: 80, 250, 123;
-	--color-green: #50fa7b;
 	--color-cyan-rgb: 139, 233, 253;
-	--color-cyan: #8be9fd;
 	--color-blue-rgb: 214, 172, 255;
-	--color-blue: #d6acff;
 	--color-purple-rgb: 189, 147, 249;
-	--color-purple: #bd93f9;
 	--color-pink-rgb: 255, 121, 198;
-	--color-pink: #ff79c6;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-tokyo-night) {
@@ -793,33 +631,19 @@ body {
 	--accent-h: 221;
 	--accent-s: 89%;
 	--accent-l: 72%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #16161e;
 	--background-secondary-alt: #121218;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #78a0f7;
 	--text-highlight-bg: #e0af6844;
-	--text-on-accent: #111;
 	--background-modifier-border: #292e42;
 	--color-red-rgb: 247, 118, 142;
-	--color-red: #f7768e;
 	--color-orange-rgb: 255, 158, 100;
-	--color-orange: #ff9e64;
 	--color-yellow-rgb: 224, 175, 104;
-	--color-yellow: #e0af68;
 	--color-green-rgb: 158, 206, 106;
-	--color-green: #9ece6a;
 	--color-cyan-rgb: 125, 207, 255;
-	--color-cyan: #7dcfff;
 	--color-blue-rgb: 122, 162, 247;
-	--color-blue: #7aa2f7;
 	--color-purple-rgb: 157, 124, 216;
-	--color-purple: #9d7cd8;
 	--color-pink-rgb: 187, 154, 247;
-	--color-pink: #bb9af7;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-gruvbox) {
@@ -838,33 +662,19 @@ body {
 	--accent-h: 157;
 	--accent-s: 16%;
 	--accent-l: 58%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #1d2021;
 	--background-secondary-alt: #171a1a;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #83a598;
 	--text-highlight-bg: #fabd2f44;
-	--text-on-accent: #111;
 	--background-modifier-border: #504945;
 	--color-red-rgb: 251, 73, 52;
-	--color-red: #fb4934;
 	--color-orange-rgb: 254, 128, 25;
-	--color-orange: #fe8019;
 	--color-yellow-rgb: 250, 189, 47;
-	--color-yellow: #fabd2f;
 	--color-green-rgb: 184, 187, 38;
-	--color-green: #b8bb26;
 	--color-cyan-rgb: 142, 192, 124;
-	--color-cyan: #8ec07c;
 	--color-blue-rgb: 131, 165, 152;
-	--color-blue: #83a598;
 	--color-purple-rgb: 211, 134, 155;
-	--color-purple: #d3869b;
 	--color-pink-rgb: 177, 98, 134;
-	--color-pink: #b16286;
 }
 
 :root body.theme-light:where(.chroma-other-light-gruvbox) {
@@ -883,33 +693,19 @@ body {
 	--accent-h: 189;
 	--accent-s: 89%;
 	--accent-l: 25%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #f2e5bc;
 	--background-secondary-alt: #e3d7b1;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #076778;
 	--text-highlight-bg: #b5761466;
-	--text-on-accent: #fff;
 	--background-modifier-border: #d5c4a1;
 	--color-red-rgb: 157, 0, 6;
-	--color-red: #9d0006;
 	--color-orange-rgb: 175, 58, 3;
-	--color-orange: #af3a03;
 	--color-yellow-rgb: 181, 118, 20;
-	--color-yellow: #b57614;
 	--color-green-rgb: 121, 116, 14;
-	--color-green: #79740e;
 	--color-cyan-rgb: 66, 123, 88;
-	--color-cyan: #427b58;
 	--color-blue-rgb: 7, 102, 120;
-	--color-blue: #076678;
 	--color-purple-rgb: 143, 63, 113;
-	--color-purple: #8f3f71;
 	--color-pink-rgb: 177, 98, 134;
-	--color-pink: #b16286;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-horizon) {
@@ -928,33 +724,19 @@ body {
 	--accent-h: 345;
 	--accent-s: 77%;
 	--accent-l: 62%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #1a1c23;
 	--background-secondary-alt: #15161c;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #e95379;
 	--text-highlight-bg: #fab79544;
-	--text-on-accent: #111;
 	--background-modifier-border: #2e303e;
 	--color-red-rgb: 233, 86, 120;
-	--color-red: #e95678;
 	--color-orange-rgb: 240, 148, 131;
-	--color-orange: #f09483;
 	--color-yellow-rgb: 250, 183, 149;
-	--color-yellow: #fab795;
 	--color-green-rgb: 41, 211, 152;
-	--color-green: #29d398;
 	--color-cyan-rgb: 89, 225, 227;
-	--color-cyan: #59e1e3;
 	--color-blue-rgb: 38, 187, 217;
-	--color-blue: #26bbd9;
 	--color-purple-rgb: 184, 119, 219;
-	--color-purple: #b877db;
 	--color-pink-rgb: 238, 100, 172;
-	--color-pink: #ee64ac;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-sonokai-espresso) {
@@ -973,33 +755,19 @@ body {
 	--accent-h: 175;
 	--accent-s: 46%;
 	--accent-l: 66%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #242120;
 	--background-secondary-alt: #1d1a1a;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #80d0ca;
 	--text-highlight-bg: #f0c66f44;
-	--text-on-accent: #111;
 	--background-modifier-border: #413937;
 	--color-red-rgb: 248, 104, 130;
-	--color-red: #f86882;
 	--color-orange-rgb: 240, 141, 113;
-	--color-orange: #f08d71;
 	--color-yellow-rgb: 240, 198, 111;
-	--color-yellow: #f0c66f;
 	--color-green-rgb: 166, 205, 119;
-	--color-green: #a6cd77;
 	--color-cyan-rgb: 129, 208, 201;
-	--color-cyan: #81d0c9;
 	--color-blue-rgb: 129, 208, 201;
-	--color-blue: #81d0c9;
 	--color-purple-rgb: 159, 160, 225;
-	--color-purple: #9fa0e1;
 	--color-pink-rgb: 248, 104, 130;
-	--color-pink: #f86882;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-nordic) {
@@ -1018,33 +786,19 @@ body {
 	--accent-h: 210;
 	--accent-s: 34%;
 	--accent-l: 63%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #1e222a;
 	--background-secondary-alt: #181b22;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #81a1c1;
 	--text-highlight-bg: #ebcb8b44;
-	--text-on-accent: #111;
 	--background-modifier-border: #3b4252;
 	--color-red-rgb: 191, 97, 106;
-	--color-red: #bf616a;
 	--color-orange-rgb: 208, 135, 112;
-	--color-orange: #d08770;
 	--color-yellow-rgb: 235, 203, 139;
-	--color-yellow: #ebcb8b;
 	--color-green-rgb: 163, 190, 140;
-	--color-green: #a3be8c;
 	--color-cyan-rgb: 143, 188, 187;
-	--color-cyan: #8fbcbb;
 	--color-blue-rgb: 129, 161, 193;
-	--color-blue: #81a1c1;
 	--color-purple-rgb: 180, 142, 173;
-	--color-purple: #b48ead;
 	--color-pink-rgb: 190, 157, 184;
-	--color-pink: #be9db8;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-coffee) {
@@ -1063,33 +817,19 @@ body {
 	--accent-h: 13;
 	--accent-s: 80%;
 	--accent-l: 70%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #231f1e;
 	--background-secondary-alt: #1c1918;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #f09075;
 	--text-highlight-bg: #f7d97944;
-	--text-on-accent: #111;
 	--background-modifier-border: #51403b;
 	--color-red-rgb: 242, 67, 67;
-	--color-red: #f24343;
 	--color-orange-rgb: 255, 167, 119;
-	--color-orange: #ffa777;
 	--color-yellow-rgb: 247, 217, 121;
-	--color-yellow: #f7d979;
 	--color-green-rgb: 157, 204, 87;
-	--color-green: #9dcc57;
 	--color-cyan-rgb: 60, 234, 168;
-	--color-cyan: #3ceaa8;
 	--color-blue-rgb: 110, 221, 214;
-	--color-blue: #6eddd6;
 	--color-purple-rgb: 153, 145, 241;
-	--color-purple: #9991f1;
 	--color-pink-rgb: 228, 128, 173;
-	--color-pink: #e480ad;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-nightfox) {
@@ -1108,33 +848,19 @@ body {
 	--accent-h: 214;
 	--accent-s: 55%;
 	--accent-l: 64%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #131a24;
 	--background-secondary-alt: #0f151d;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #719cd6;
 	--text-highlight-bg: #dbc07444;
-	--text-on-accent: #111;
 	--background-modifier-border: #29394f;
 	--color-red-rgb: 201, 79, 109;
-	--color-red: #c94f6d;
 	--color-orange-rgb: 244, 162, 97;
-	--color-orange: #f4a261;
 	--color-yellow-rgb: 219, 192, 116;
-	--color-yellow: #dbc074;
 	--color-green-rgb: 129, 178, 154;
-	--color-green: #81b29a;
 	--color-cyan-rgb: 99, 205, 207;
-	--color-cyan: #63cdcf;
 	--color-blue-rgb: 113, 156, 214;
-	--color-blue: #719cd6;
 	--color-purple-rgb: 157, 121, 214;
-	--color-purple: #9d79d6;
 	--color-pink-rgb: 214, 122, 210;
-	--color-pink: #d67ad2;
 }
 
 :root body.theme-light:where(.chroma-other-light-dayfox) {
@@ -1153,33 +879,19 @@ body {
 	--accent-h: 225;
 	--accent-s: 62%;
 	--accent-l: 41%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #e4dcd4;
 	--background-secondary-alt: #d6cfc7;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #2848a9;
 	--text-highlight-bg: #ac540266;
-	--text-on-accent: #fff;
 	--background-modifier-border: #d3c7bb;
 	--color-red-rgb: 165, 34, 47;
-	--color-red: #a5222f;
 	--color-orange-rgb: 149, 95, 97;
-	--color-orange: #955f61;
 	--color-yellow-rgb: 172, 84, 2;
-	--color-yellow: #ac5402;
 	--color-green-rgb: 57, 104, 71;
-	--color-green: #396847;
 	--color-cyan-rgb: 40, 121, 128;
-	--color-cyan: #287980;
 	--color-blue-rgb: 40, 72, 169;
-	--color-blue: #2848a9;
 	--color-purple-rgb: 110, 51, 206;
-	--color-purple: #6e33ce;
 	--color-pink-rgb: 164, 64, 181;
-	--color-pink: #a440b5;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-mocha) {
@@ -1198,33 +910,19 @@ body {
 	--accent-h: 215;
 	--accent-s: 65%;
 	--accent-l: 78%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #2c2122;
 	--background-secondary-alt: #231a1b;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #a2c1eb;
 	--text-highlight-bg: #f7e06244;
-	--text-on-accent: #111;
 	--background-modifier-border: #4c3c3d;
 	--color-red-rgb: 255, 137, 133;
-	--color-red: #ff8985;
 	--color-orange-rgb: 255, 173, 0;
-	--color-orange: #ffad00;
 	--color-yellow-rgb: 247, 224, 98;
-	--color-yellow: #f7e062;
 	--color-green-rgb: 146, 207, 156;
-	--color-green: #92cf9c;
 	--color-cyan-rgb: 99, 208, 223;
-	--color-cyan: #63d0df;
 	--color-blue-rgb: 161, 192, 235;
-	--color-blue: #a1c0eb;
 	--color-purple-rgb: 231, 156, 254;
-	--color-purple: #e79cfe;
 	--color-pink-rgb: 253, 160, 160;
-	--color-pink: #fda0a0;
 }
 
 :root body.theme-dark:where(.chroma-other-dark-panda) {
@@ -1243,33 +941,20 @@ body {
 	--accent-h: 210;
 	--accent-s: 93%;
 	--accent-l: 74%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #191919;
 	--background-secondary-alt: #151515;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #7dc1ff;
 	--text-highlight-bg: #ffb86c59;
 	--text-on-accent: #1f1f1f;
 	--background-modifier-border: #2a2a2a;
 	--color-red-rgb: 236, 40, 100;
-	--color-red: #ec2864;
 	--color-orange-rgb: 255, 184, 108;
-	--color-orange: #ffb86c;
 	--color-yellow-rgb: 255, 184, 108;
-	--color-yellow: #ffb86c;
 	--color-green-rgb: 25, 249, 216;
-	--color-green: #19f9d8;
 	--color-cyan-rgb: 53, 255, 220;
-	--color-cyan: #35ffdc;
 	--color-blue-rgb: 125, 193, 255;
-	--color-blue: #7dc1ff;
 	--color-purple-rgb: 176, 132, 235;
-	--color-purple: #b084eb;
 	--color-pink-rgb: 255, 144, 208;
-	--color-pink: #ff90d0;
 }
 
 :root body.theme-light:where(.chroma-other-light-panda) {
@@ -1288,33 +973,19 @@ body {
 	--accent-h: 210;
 	--accent-s: 100%;
 	--accent-l: 40%;
-	--background-primary: var(--color-base-00);
-	--background-primary-alt: var(--color-base-05);
 	--background-secondary: #f0f0f0;
 	--background-secondary-alt: #e4e4e4;
-	--text-normal: var(--color-base-100);
-	--text-muted: var(--color-base-60);
-	--text-faint: var(--color-base-50);
 	--text-accent: #2b6cb0;
 	--text-highlight-bg: #ffb86c59;
-	--text-on-accent: #fff;
 	--background-modifier-border: #d4d4d4;
 	--color-red-rgb: 192, 20, 60;
-	--color-red: #c0143c;
 	--color-orange-rgb: 196, 120, 0;
-	--color-orange: #c47800;
 	--color-yellow-rgb: 196, 120, 0;
-	--color-yellow: #c47800;
 	--color-green-rgb: 0, 122, 110;
-	--color-green: #007a6e;
 	--color-cyan-rgb: 0, 122, 110;
-	--color-cyan: #007a6e;
 	--color-blue-rgb: 43, 108, 176;
-	--color-blue: #2b6cb0;
 	--color-purple-rgb: 107, 53, 176;
-	--color-purple: #6b35b0;
 	--color-pink-rgb: 191, 41, 130;
-	--color-pink: #bf2982;
 }
 
 /* Syntax roles read each scheme's colors. */
@@ -1364,7 +1035,7 @@ body:where(.chroma-callouts-accent-line) .callout {
 }
 
 /* Tinted options fill the title and shade the content. Only the accent line differs. */
-body:where(.chroma-callouts-tinted-line) .callout {
+body:where(.chroma-callouts-tinted-line, .chroma-callouts-tinted) .callout {
 	--callout-border-width: 0;
 	--callout-border-opacity: 1;
 	--callout-padding: 0;
@@ -1372,19 +1043,11 @@ body:where(.chroma-callouts-tinted-line) .callout {
 	--callout-title-padding: var(--size-4-2) var(--size-4-4);
 	--callout-content-padding: 0 var(--size-4-4);
 
-	border-inline-start-width: 4px;
 	background-color: color-mix(in oklch, var(--callout-color) 12%, transparent);
 }
 
-body:where(.chroma-callouts-tinted) .callout {
-	--callout-border-width: 0;
-	--callout-border-opacity: 1;
-	--callout-padding: 0;
-	--callout-radius: var(--radius-s);
-	--callout-title-padding: var(--size-4-2) var(--size-4-4);
-	--callout-content-padding: 0 var(--size-4-4);
-
-	background-color: color-mix(in oklch, var(--callout-color) 12%, transparent);
+body:where(.chroma-callouts-tinted-line) .callout {
+	border-inline-start-width: 4px;
 }
 
 body.theme-dark:where(.chroma-callouts-tinted-line, .chroma-callouts-tinted) .callout {
@@ -1524,10 +1187,10 @@ body:where(.chroma-headings-rainbow) {
 /* Tables use a filled header and striped rows. Their alignment stays native. */
 body:where(:not(.chroma-disable-table-style)) {
 	--table-header-background: var(--color-purple);
-	--table-header-background-hover: var(--color-purple);
+	--table-header-background-hover: var(--table-header-background);
 	--table-header-color: var(--background-primary);
 	--table-row-alt-background: color-mix(in oklch, var(--text-normal) 8%, transparent);
-	--table-row-alt-background-hover: color-mix(in oklch, var(--text-normal) 8%, transparent);
+	--table-row-alt-background-hover: var(--table-row-alt-background);
 	--table-add-button-border-color: transparent;
 	--table-line-height: 1.5;
 	--chroma-table-cell-padding: var(--size-2-3) var(--size-4-5);
@@ -1958,13 +1621,7 @@ body:where(:not(.chroma-disable-alternate-checkboxes)) :is(input[data-task="S"],
 	mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M12.781 8.34c-.84-.665-2.146-1.247-3.354-1.715V4.396a28.48 28.48 0 0 1 2.123.772c.096.04.209.006.265-.082l1.193-1.805a.219.219 0 0 0-.079-.314c-.68-.365-2.072-.93-3.502-1.293V.366a.27.27 0 0 0-.27-.271H6.985a.271.271 0 0 0-.271.271v.973c-2.014.092-3.38.795-4.166 2.147-.616 1.06-.613 2.255.004 3.118.645.922 1.699 1.332 3.031 1.851l.172.066c.309.118.634.239.959.359v2.715c-1.41-.335-2.736-1.023-2.98-1.189a.218.218 0 0 0-.296.048l-1.444 1.883a.211.211 0 0 0-.043.163.22.22 0 0 0 .086.145c.874.648 2.145 1.266 3.403 1.654a12.4 12.4 0 0 0 1.275.316v1.018c0 .148.121.27.271.27h2.173a.27.27 0 0 0 .27-.27v-.845c1.928-.16 3.368-.997 4.192-2.45.793-1.402.49-2.858-.839-3.998ZM6.712 4.014v1.643c-.624-.2-.993-.394-.953-.872.04-.49.51-.69.954-.771Zm2.716 5.875c.458.205.806.42.927.689.069.152.063.326-.016.533-.14.364-.502.553-.912.649V9.889Z'/%3e%3c/svg%3e");
 }
 
-body:where(:not(.chroma-disable-alternate-checkboxes)) :is(input[data-task="\""], li[data-task="\""] > input, li[data-task="\""] > p > input):checked {
-	--checkbox-color-hover: var(--color-purple);
-
-	color: var(--color-purple);
-	mask-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg id="svg0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1{fill:none;}</style></defs><rect class="cls-1" width="16" height="16"/><path d="M2.46,4.19c.94-1.01,2.35-1.53,4.21-1.53h.67v1.88l-.54,.11c-.91,.18-1.55,.54-1.89,1.07-.18,.28-.28,.61-.29,.94h2.05c.18,0,.35,.07,.47,.2,.13,.13,.2,.29,.2,.47v4.67c0,.74-.6,1.33-1.33,1.33H2c-.18,0-.35-.07-.47-.2-.13-.12-.2-.29-.2-.47V7.39c0-.07-.13-1.83,1.13-3.19ZM13.33,13.33h-4c-.18,0-.35-.07-.47-.2-.13-.12-.2-.29-.2-.47V7.39c0-.07-.13-1.83,1.13-3.19,.94-1.01,2.35-1.53,4.21-1.53h.67v1.88l-.54,.11c-.91,.18-1.55,.54-1.89,1.07-.18,.28-.28,.61-.29,.94h2.05c.18,0,.35,.07,.47,.2,.12,.13,.2,.29,.2,.47v4.67c0,.74-.6,1.33-1.33,1.33Z"/></svg>');
-}
-
+body:where(:not(.chroma-disable-alternate-checkboxes)) :is(input[data-task="\""], li[data-task="\""] > input, li[data-task="\""] > p > input):checked,
 body:where(:not(.chroma-disable-alternate-checkboxes)) :is(input[data-task="“"], li[data-task="“"] > input, li[data-task="“"] > p > input):checked {
 	--checkbox-color-hover: var(--color-purple);
 
