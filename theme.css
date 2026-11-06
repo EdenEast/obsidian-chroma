@@ -37,28 +37,30 @@ settings:
     options:
       - label: None
         value: chroma-other-dark-none
+      - label: Border
+        value: chroma-other-dark-border
+      - label: Coffee
+        value: chroma-other-dark-coffee
       - label: Dracula
         value: chroma-other-dark-dracula
-      - label: Tokyo Night
-        value: chroma-other-dark-tokyo-night
+      - label: Everforest
+        value: chroma-other-dark-everforest
       - label: Gruvbox Dark
         value: chroma-other-dark-gruvbox
       - label: Horizon
         value: chroma-other-dark-horizon
-      - label: Sonokai Espresso
-        value: chroma-other-dark-sonokai-espresso
-      - label: Nordic
-        value: chroma-other-dark-nordic
-      - label: Coffee
-        value: chroma-other-dark-coffee
-      - label: Nightfox
-        value: chroma-other-dark-nightfox
       - label: Mocha Dark
         value: chroma-other-dark-mocha
+      - label: Nightfox
+        value: chroma-other-dark-nightfox
+      - label: Nordic
+        value: chroma-other-dark-nordic
       - label: Panda Syntax
         value: chroma-other-dark-panda
-      - label: Everforest
-        value: chroma-other-dark-everforest
+      - label: Sonokai Espresso
+        value: chroma-other-dark-sonokai-espresso
+      - label: Tokyo Night
+        value: chroma-other-dark-tokyo-night
   - id: chroma-other-light-scheme
     title: Light mode scheme
     description: Replaces the Chroma color scheme in light mode while selected. None uses the Chroma color scheme.
@@ -68,14 +70,16 @@ settings:
     options:
       - label: None
         value: chroma-other-light-none
-      - label: Gruvbox Light
-        value: chroma-other-light-gruvbox
+      - label: Border
+        value: chroma-other-light-border
       - label: Dayfox
         value: chroma-other-light-dayfox
-      - label: Panda Syntax
-        value: chroma-other-light-panda
       - label: Everforest
         value: chroma-other-light-everforest
+      - label: Gruvbox Light
+        value: chroma-other-light-gruvbox
+      - label: Panda Syntax
+        value: chroma-other-light-panda
   - id: chroma-interface-heading
     title: Interface
     type: heading
@@ -652,7 +656,9 @@ body {
    Nightfox and Dayfox: https://github.com/EdenEast/nightfox.nvim/tree/main/lua/nightfox/palette
    Mocha Dark: https://github.com/pop-os/cosmic-initial-setup/blob/master/res/themes/mocha-dark.ron
    Panda Syntax: Obsidian theme 2.0.0 by Yanna Lin, https://github.com/linyanna
-   Everforest (medium): https://github.com/sainnhe/everforest/blob/master/autoload/everforest.vim */
+   Everforest (medium): https://github.com/sainnhe/everforest/blob/master/autoload/everforest.vim
+   Border: installed Obsidian theme 1.13.9 by Akifyss, default light/dark appearances.
+   Its accent-tinted surfaces and text are mapped to Chroma's shared palette roles. */
 :root body.theme-dark:where(.chroma-other-dark-dracula) {
 	--color-base-00: #282a36;
 	--color-base-05: #2e313e;
@@ -1117,6 +1123,71 @@ body {
 	--color-blue-rgb: 58, 148, 197;
 	--color-purple-rgb: 223, 105, 186;
 	--color-pink-rgb: 223, 105, 186;
+}
+
+/* Border's default surfaces follow its accent; Chroma keeps its own geometry. */
+:root body.theme-dark:where(.chroma-other-dark-border) {
+	--color-base-00: hsl(var(--accent-h), calc(var(--accent-s) / 5), calc(1.25 * var(--accent-l) / 4.5));
+	--color-base-05: hsl(var(--accent-h), calc(var(--accent-s) / 5), calc(1.25 * var(--accent-l) / 3.9));
+	--color-base-10: #242424;
+	--color-base-20: #262626;
+	--color-base-25: #2a2a2a;
+	--color-base-30: #363636;
+	--color-base-35: #3f3f3f;
+	--color-base-40: #555;
+	--color-base-50: hsl(var(--accent-h), 9%, 50%);
+	--color-base-60: hsl(var(--accent-h), 12%, 75%);
+	--color-base-70: #bababa;
+	--color-base-100: hsl(var(--accent-h), 15%, 85%);
+	--accent-h: 232;
+	--accent-s: 40%;
+	--accent-l: 60%;
+	--background-secondary: hsl(var(--accent-h), calc(var(--accent-s) / 5), calc(1.25 * var(--accent-l) / 4.9));
+	--background-secondary-alt: hsl(var(--accent-h), calc(var(--accent-s) / 5.4), calc(1.25 * var(--accent-l) / 3));
+	--text-accent: hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15));
+	--text-highlight-bg: rgba(255, 208, 0, 0.4);
+	--text-on-accent: #fff;
+	--background-modifier-border: hsla(var(--accent-h), calc(0.4 * var(--accent-s)), calc(0.9 * var(--accent-l)), 0.2);
+	--color-red-rgb: 255, 120, 129;
+	--color-orange-rgb: 251, 187, 131;
+	--color-yellow-rgb: 255, 232, 139;
+	--color-green-rgb: 124, 211, 124;
+	--color-cyan-rgb: 134, 223, 226;
+	--color-blue-rgb: 137, 189, 244;
+	--color-purple-rgb: 203, 158, 255;
+	--color-pink-rgb: 242, 182, 222;
+}
+
+:root body.theme-light:where(.chroma-other-light-border) {
+	--color-base-00: #ffffff;
+	--color-base-05: #fafafa;
+	--color-base-10: #fafafa;
+	--color-base-20: #f0f0f0;
+	--color-base-25: #e3e3e3;
+	--color-base-30: #e0e0e0;
+	--color-base-35: #d4d4d4;
+	--color-base-40: #bdbdbd;
+	--color-base-50: hsl(var(--accent-h), 12%, 64%);
+	--color-base-60: hsl(var(--accent-h), 9%, 36%);
+	--color-base-70: #5a5a5a;
+	--color-base-100: hsl(var(--accent-h), 6%, 12%);
+	--accent-h: 232;
+	--accent-s: 96%;
+	--accent-l: 64%;
+	--background-secondary: hsl(var(--accent-h), calc(var(--accent-s) / 6), calc(100% - (100% - var(--accent-l)) / 16));
+	--background-secondary-alt: #fcfcfc;
+	--text-accent: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
+	--text-highlight-bg: rgba(255, 208, 0, 0.4);
+	--text-on-accent: #fff;
+	--background-modifier-border: hsla(var(--accent-h), calc(0.4 * var(--accent-s)), var(--accent-l), 0.2);
+	--color-red-rgb: 221, 44, 56;
+	--color-orange-rgb: 222, 116, 23;
+	--color-yellow-rgb: 192, 156, 12;
+	--color-green-rgb: 29, 165, 29;
+	--color-cyan-rgb: 22, 166, 171;
+	--color-blue-rgb: 23, 117, 217;
+	--color-purple-rgb: 143, 71, 225;
+	--color-pink-rgb: 221, 19, 153;
 }
 
 /* Syntax roles read each scheme's colors. */
@@ -1598,9 +1669,8 @@ body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs:not(
 	overflow: hidden;
 }
 
-/* Style Settings: each open section sits in its own box, and open headings cycle
-   through three colors. Top-level sections show an icon in place of the arrow.
-   Headings and boxes alternate as siblings, so nth-child counts both. */
+/* Style Settings: each open section sits in its own box.
+   Top-level sections show an icon in place of the arrow. */
 .style-settings-collapse-indicator {
 	top: unset;
 }
@@ -1642,26 +1712,6 @@ body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs:not(
 
 .style-settings-container .setting-item:last-child {
 	padding-bottom: 0;
-}
-
-.style-settings-heading:not(.is-collapsed):nth-child(3n + 1) {
-	--chroma-settings-heading: var(--color-red);
-}
-
-.style-settings-heading:not(.is-collapsed):nth-child(3n + 2) {
-	--chroma-settings-heading: var(--color-orange);
-}
-
-.style-settings-heading:not(.is-collapsed):nth-child(3n + 3) {
-	--chroma-settings-heading: var(--color-green);
-}
-
-.style-settings-heading:not(.is-collapsed) .setting-item-name {
-	color: var(--chroma-settings-heading);
-}
-
-.style-settings-heading:not(.is-collapsed) .style-settings-collapse-indicator {
-	color: color-mix(in srgb, var(--chroma-settings-heading) 60%, var(--background-primary));
 }
 
 .style-settings-heading:is([data-id="chroma"], [data-id="chroma-colors-heading"], [data-id="chroma-interface-heading"], [data-id="chroma-components-heading"]) .style-settings-collapse-indicator > svg {
