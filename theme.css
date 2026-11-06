@@ -57,6 +57,8 @@ settings:
         value: chroma-other-dark-mocha
       - label: Panda Syntax
         value: chroma-other-dark-panda
+      - label: Everforest
+        value: chroma-other-dark-everforest
   - id: chroma-other-light-scheme
     title: Light mode scheme
     description: Replaces the Chroma color scheme in light mode while selected. None uses the Chroma color scheme.
@@ -72,6 +74,8 @@ settings:
         value: chroma-other-light-dayfox
       - label: Panda Syntax
         value: chroma-other-light-panda
+      - label: Everforest
+        value: chroma-other-light-everforest
   - id: chroma-interface-heading
     title: Interface
     type: heading
@@ -647,7 +651,8 @@ body {
    Coffee: https://github.com/BeardedBear/bearded-theme/blob/d7fe40e1977589849ab81cba0d4301c9f4396493/src/variations/exotic.ts#L33-L58
    Nightfox and Dayfox: https://github.com/EdenEast/nightfox.nvim/tree/main/lua/nightfox/palette
    Mocha Dark: https://github.com/pop-os/cosmic-initial-setup/blob/master/res/themes/mocha-dark.ron
-   Panda Syntax: Obsidian theme 2.0.0 by Yanna Lin, https://github.com/linyanna */
+   Panda Syntax: Obsidian theme 2.0.0 by Yanna Lin, https://github.com/linyanna
+   Everforest (medium): https://github.com/sainnhe/everforest/blob/master/autoload/everforest.vim */
 :root body.theme-dark:where(.chroma-other-dark-dracula) {
 	--color-base-00: #282a36;
 	--color-base-05: #2e313e;
@@ -1050,6 +1055,68 @@ body {
 	--color-blue-rgb: 43, 108, 176;
 	--color-purple-rgb: 107, 53, 176;
 	--color-pink-rgb: 191, 41, 130;
+}
+
+:root body.theme-dark:where(.chroma-other-dark-everforest) {
+	--color-base-00: #2d353b;
+	--color-base-05: #343f44;
+	--color-base-10: #3d484d;
+	--color-base-20: #475258;
+	--color-base-25: #4f585e;
+	--color-base-30: #56635f;
+	--color-base-35: #68746b;
+	--color-base-40: #7a8478;
+	--color-base-50: #859289;
+	--color-base-60: #9da9a0;
+	--color-base-70: #b8b8a5;
+	--color-base-100: #d3c6aa;
+	--accent-h: 83;
+	--accent-s: 34%;
+	--accent-l: 63%;
+	--background-secondary: #232a2e;
+	--background-secondary-alt: #1e2326;
+	--text-accent: #a7c080;
+	--text-highlight-bg: #dbbc7f44;
+	--background-modifier-border: #4f585e;
+	--color-red-rgb: 230, 126, 128;
+	--color-orange-rgb: 230, 152, 117;
+	--color-yellow-rgb: 219, 188, 127;
+	--color-green-rgb: 167, 192, 128;
+	--color-cyan-rgb: 131, 192, 146;
+	--color-blue-rgb: 127, 187, 179;
+	--color-purple-rgb: 214, 153, 182;
+	--color-pink-rgb: 214, 153, 182;
+}
+
+:root body.theme-light:where(.chroma-other-light-everforest) {
+	--color-base-00: #fdf6e3;
+	--color-base-05: #f4f0d9;
+	--color-base-10: #efebd4;
+	--color-base-20: #e6e2cc;
+	--color-base-25: #e0dcc7;
+	--color-base-30: #bdc3af;
+	--color-base-35: #a6b0a0;
+	--color-base-40: #939f91;
+	--color-base-50: #829181;
+	--color-base-60: #708089;
+	--color-base-70: #66757e;
+	--color-base-100: #5c6a72;
+	--accent-h: 67;
+	--accent-s: 99%;
+	--accent-l: 32%;
+	--background-secondary: #efebd4;
+	--background-secondary-alt: #e6e2cc;
+	--text-accent: #8da101;
+	--text-highlight-bg: #dfa00044;
+	--background-modifier-border: #e0dcc7;
+	--color-red-rgb: 248, 85, 82;
+	--color-orange-rgb: 245, 125, 38;
+	--color-yellow-rgb: 223, 160, 0;
+	--color-green-rgb: 141, 161, 1;
+	--color-cyan-rgb: 53, 167, 124;
+	--color-blue-rgb: 58, 148, 197;
+	--color-purple-rgb: 223, 105, 186;
+	--color-pink-rgb: 223, 105, 186;
 }
 
 /* Syntax roles read each scheme's colors. */
