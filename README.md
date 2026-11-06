@@ -1,6 +1,6 @@
 # Chroma
 
-Chroma is an Obsidian theme with neutral backgrounds and a choice of color schemes. It has six schemes of its own, each with light and dark versions. It also includes ported schemes such as Dracula and Gruvbox.
+Chroma is an Obsidian theme with neutral backgrounds and a choice of color schemes. It has seven schemes of its own, each with light and dark versions. It also includes ported schemes such as Dracula and Gruvbox.
 
 ## Install the theme
 
@@ -17,7 +17,7 @@ The settings are grouped into collapsible sections.
 
 ### Color schemes
 
-- **Color scheme** offers Neutral, Harbor, Parchment, Forest, Carbon, and Mulberry.
+- **Color scheme** offers Neutral, Harbor, Parchment, Forest, Carbon, Mulberry, and Crimson. Crimson pairs warm red accents with burgundy-tinted dark backgrounds and warm ivory light backgrounds.
 - **Dark mode scheme** offers Dracula, Tokyo Night, Gruvbox Dark, Horizon, Sonokai Espresso, Nordic, Coffee, Nightfox, Mocha Dark, and Panda Syntax.
 - **Light mode scheme** offers Gruvbox Light, Dayfox, and Panda Syntax.
 

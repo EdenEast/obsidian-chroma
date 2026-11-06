@@ -26,6 +26,8 @@ settings:
         value: chroma-palette-carbon
       - label: Mulberry
         value: chroma-palette-mulberry
+      - label: Crimson
+        value: chroma-palette-crimson
   - id: chroma-other-dark-scheme
     title: Dark mode scheme
     description: Replaces the Chroma color scheme in dark mode while selected. None uses the Chroma color scheme.
@@ -567,6 +569,68 @@ body {
 	--color-blue-rgb: 58, 95, 168;
 	--color-purple-rgb: 125, 63, 168;
 	--color-pink-rgb: 167, 46, 121;
+}
+
+:root body.theme-dark:where(.chroma-palette-crimson) {
+	--color-base-00: #261b1c;
+	--color-base-05: #2e2122;
+	--color-base-10: #362728;
+	--color-base-20: #402e30;
+	--color-base-25: #4a3739;
+	--color-base-30: #574144;
+	--color-base-35: #70575a;
+	--color-base-40: #8a6e71;
+	--color-base-50: #a68b8e;
+	--color-base-60: #cbb4b5;
+	--color-base-70: #dfcccd;
+	--color-base-100: #f2e7e6;
+	--accent-h: 4;
+	--accent-s: 76%;
+	--accent-l: 72%;
+	--background-secondary: #1e1415;
+	--background-secondary-alt: #180f10;
+	--text-accent: #ee8981;
+	--text-highlight-bg: #e9bd7044;
+	--background-modifier-border: #574144;
+	--color-red-rgb: 238, 137, 129;
+	--color-orange-rgb: 232, 166, 112;
+	--color-yellow-rgb: 226, 195, 119;
+	--color-green-rgb: 153, 199, 157;
+	--color-cyan-rgb: 128, 196, 196;
+	--color-blue-rgb: 147, 177, 224;
+	--color-purple-rgb: 193, 160, 220;
+	--color-pink-rgb: 228, 161, 185;
+}
+
+:root body.theme-light:where(.chroma-palette-crimson) {
+	--color-base-00: #fcf3f0;
+	--color-base-05: #f7eae6;
+	--color-base-10: #f2e1dd;
+	--color-base-20: #ecd8d4;
+	--color-base-25: #e6ceca;
+	--color-base-30: #dec1bd;
+	--color-base-35: #c0a09c;
+	--color-base-40: #a27f7b;
+	--color-base-50: #87635f;
+	--color-base-60: #6e4c49;
+	--color-base-70: #563936;
+	--color-base-100: #3d2523;
+	--accent-h: 4;
+	--accent-s: 62%;
+	--accent-l: 39%;
+	--background-secondary: #f2e1dd;
+	--background-secondary-alt: #e8d3ce;
+	--text-accent: #a13226;
+	--text-highlight-bg: #e9bd7066;
+	--background-modifier-border: #dec1bd;
+	--color-red-rgb: 161, 50, 38;
+	--color-orange-rgb: 151, 77, 20;
+	--color-yellow-rgb: 124, 96, 10;
+	--color-green-rgb: 55, 110, 71;
+	--color-cyan-rgb: 36, 106, 111;
+	--color-blue-rgb: 53, 95, 157;
+	--color-purple-rgb: 120, 68, 156;
+	--color-pink-rgb: 158, 52, 100;
 }
 
 /* Other schemes follow every Chroma palette at equal specificity, so a selected
