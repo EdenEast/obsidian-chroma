@@ -1589,7 +1589,7 @@ body:not(.is-mobile):where(.chroma-panels-cards) .status-bar {
 	border-right-width: 0;
 }
 
-/* Soft shadows, Three levels, and Raised editor separate panels with depth, not lines.
+/* Soft shadows, Three levels, and Raised editor separate panels with depth.
    :root outranks the palettes, which set the same background variables. */
 :root body.theme-dark:not(.is-mobile):where(.chroma-panels-shadows, .chroma-panels-levels, .chroma-panels-raised) {
 	--chroma-panel-deep: color-mix(in srgb, var(--background-secondary-alt) 60%, black);
@@ -1601,6 +1601,12 @@ body:not(.is-mobile):where(.chroma-panels-cards) .status-bar {
 	--chroma-panel-deep: color-mix(in srgb, var(--background-secondary-alt) 92%, black);
 	--chroma-panel-shadow-near: rgba(0, 0, 0, 0.1);
 	--chroma-panel-shadow-far: rgba(0, 0, 0, 0.16);
+}
+
+/* Keep dark surroundings close to the editor, leaving room for its shadow.
+   Using the editor surface also handles schemes with black secondary surfaces. */
+:root body.theme-dark:not(.is-mobile):where(.chroma-panels-raised) {
+	--chroma-panel-deep: color-mix(in srgb, var(--background-primary) 85%, black);
 }
 
 :root body:not(.is-mobile):where(.chroma-panels-levels, .chroma-panels-raised) {
@@ -1662,7 +1668,9 @@ body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs {
 
 body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tab-container {
 	border-radius: var(--radius-l) var(--radius-l) 0 0;
-	box-shadow: 0 0 6px var(--chroma-panel-shadow-near), 0 0 30px var(--chroma-panel-shadow-far);
+	/* A subtle outer edge stays visible above the views' own backgrounds,
+	   keeping elevation readable even against near-black frames. */
+	box-shadow: 0 0 0 1px color-mix(in srgb, var(--text-normal) 12%, transparent), 0 0 6px var(--chroma-panel-shadow-near), 0 0 30px var(--chroma-panel-shadow-far);
 }
 
 body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-container {
