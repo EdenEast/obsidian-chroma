@@ -120,6 +120,41 @@ settings:
     description: Turn on to remove the accent wash from the line holding the text cursor in Live Preview and Source mode.
     type: class-toggle
     default: false
+  - id: chroma-autohide-heading
+    title: Auto hide
+    description: Desktop controls stay accessible on hover or keyboard focus. Inspired by Border.
+    type: heading
+    level: 2
+    collapsed: true
+  - id: chroma-autohide-tabs
+    title: Auto hide tab bar
+    description: Reveal tabs at the top of each pane. Window controls stay visible.
+    type: class-toggle
+    default: false
+  - id: chroma-autohide-status-bar
+    title: Auto hide bottom status bar
+    type: class-toggle
+    default: false
+  - id: chroma-autohide-ribbon
+    title: Auto hide left ribbon menu
+    description: Reveal the ribbon at the left edge. Requires Show ribbon in Appearance settings.
+    type: class-toggle
+    default: false
+  - id: chroma-autohide-nav-header
+    title: Auto hide header icons in sidepane
+    description: Reveal sidebar buttons and search fields over their header or tab bar.
+    type: class-toggle
+    default: false
+  - id: chroma-autohide-view-header
+    title: Auto hide tab title bar
+    description: Reveal note controls at the top of the note or over its tab bar.
+    type: class-toggle
+    default: false
+  - id: chroma-autohide-vault-profile
+    title: Auto hide vault profile
+    description: Reveal the vault switcher and settings at the bottom of the left sidebar.
+    type: class-toggle
+    default: false
   - id: chroma-components-heading
     title: Components
     type: heading
@@ -1675,6 +1710,126 @@ body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tab-conta
 
 body:not(.is-mobile):where(.chroma-panels-raised) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-container {
 	overflow: hidden;
+}
+
+/* Auto hide adapts Border's hover strips to Obsidian's native layout, without
+   Border's workspace overlays or resize-handle offsets. The Border attribution
+   and MIT license below also cover these adaptations. All controls are opt-in,
+   desktop-only, and reveal on keyboard focus as well as hover. */
+body:not(.is-mobile).chroma-autohide-tabs .workspace-tab-header-container {
+	height: 16px;
+	min-height: 16px;
+	opacity: 0;
+	overflow: hidden;
+	transition: height 150ms ease, opacity 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-tabs .workspace-tab-header-container:is(:hover, :focus-within) {
+	height: var(--header-height);
+	opacity: 1;
+}
+
+/* Obsidian positions the window buttons independently of the tab strip. Keep
+   their native geometry and reveal all top strips when the titlebar is hovered. */
+body:not(.is-mobile).chroma-autohide-tabs:has(> .titlebar:hover) .mod-top .workspace-tab-header-container {
+	height: var(--header-height);
+	opacity: 1;
+}
+
+body:not(.is-mobile).chroma-autohide-status-bar .status-bar {
+	max-height: 8px;
+	min-height: 0;
+	padding: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: max-height 150ms ease, opacity 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-status-bar .status-bar:is(:hover, :focus-within) {
+	max-height: 100px;
+	padding: var(--status-bar-padding, 4px 8px);
+	opacity: 1;
+}
+
+/* Set the width on body so native sidebar and traffic-light offsets follow it. */
+body:not(.is-mobile).chroma-autohide-ribbon.show-ribbon {
+	--ribbon-width: 16px;
+}
+
+body:not(.is-mobile).chroma-autohide-ribbon.show-ribbon:has(.workspace-ribbon.side-dock-ribbon:is(:hover, :focus-within)) {
+	--ribbon-width: 44px;
+}
+
+body:not(.is-mobile).chroma-autohide-ribbon.show-ribbon .workspace-ribbon.side-dock-ribbon {
+	overflow: hidden;
+	transition: width 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-ribbon.show-ribbon .workspace-ribbon.side-dock-ribbon > * {
+	opacity: 0;
+	transition: opacity 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-ribbon.show-ribbon .workspace-ribbon.side-dock-ribbon:is(:hover, :focus-within) > * {
+	opacity: 1;
+}
+
+body:not(.is-mobile).chroma-autohide-nav-header :is(.workspace-leaf-content, .view-content) > .nav-header {
+	min-height: 8px;
+}
+
+body:not(.is-mobile).chroma-autohide-nav-header :is(.workspace-leaf-content, .view-content) > .nav-header :is(.nav-buttons-container, .search-input-container) {
+	height: 0;
+	min-height: 0;
+	margin-block: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: height 150ms ease, opacity 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-nav-header :is(.workspace-leaf-content, .view-content) > .nav-header:is(:hover, :focus-within) :is(.nav-buttons-container, .search-input-container),
+body:not(.is-mobile).chroma-autohide-nav-header .workspace-tab-header-container:is(:hover, :focus-within) ~ .workspace-tab-container .nav-header :is(.nav-buttons-container, .search-input-container) {
+	height: 32px;
+	opacity: 1;
+	overflow: visible;
+}
+
+/* A small strip remains inside the leaf, including when tab bars also hide. */
+body:not(.is-mobile).chroma-autohide-view-header .workspace-leaf .view-header {
+	height: 8px;
+	min-height: 8px;
+	opacity: 0;
+	overflow: hidden;
+	transition: height 150ms ease, opacity 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-view-header .workspace-leaf .view-header:is(:hover, :focus-within),
+body:not(.is-mobile).chroma-autohide-view-header .workspace-tab-header-container:is(:hover, :focus-within) ~ .workspace-tab-container .view-header {
+	height: var(--header-height);
+	opacity: 1;
+}
+
+/* Keep the profile in normal flow, so the sidebar reclaims its hidden space. */
+body:not(.is-mobile).chroma-autohide-vault-profile .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+	height: 12px;
+	min-height: 12px;
+	padding-block: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: height 150ms ease, opacity 150ms ease;
+}
+
+body:not(.is-mobile).chroma-autohide-vault-profile .workspace-split.mod-left-split .workspace-sidedock-vault-profile:is(:hover, :focus-within) {
+	height: 44px;
+	padding-block: 6px;
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body:not(.is-mobile):is(.chroma-autohide-tabs, .chroma-autohide-status-bar, .chroma-autohide-ribbon, .chroma-autohide-nav-header, .chroma-autohide-view-header, .chroma-autohide-vault-profile)
+	:is(.workspace-tab-header-container, .status-bar, .workspace-ribbon.side-dock-ribbon, .workspace-ribbon.side-dock-ribbon > *, .nav-header .nav-buttons-container, .nav-header .search-input-container, .view-header, .workspace-sidedock-vault-profile) {
+		transition: none;
+	}
 }
 
 /* Style Settings: each open section sits in its own box.
